@@ -1,0 +1,28 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "username": "cucumber",
+            "email": "cutecumber@gmail.com",
+            "password": "cucumbercucumber"
+        },
+        {
+            "id": 2,
+            "username": "tomato",
+            "email": "tomato.arrived.intown@gmail.com",
+            "password": "tomatotomato"
+        },
+        {
+            "id": 3,
+            "username": "patato",
+            "email": "unreal__patato@gmail.com",
+            "password": "patatopatato"
+        },
+        {
+            "id": 4,
+            "username": "cherry",
+            "email": "cherry_cherry_lady_111@gmail.com",
+            "password": "cherrycherry"
+        }
+    ]
+}

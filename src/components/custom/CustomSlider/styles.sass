@@ -1,0 +1,122 @@
+h1, h2, h3, h4
+    letter-spacing: 0.1rem
+    text-transform: capitalize
+    line-height: 1.25
+    margin-bottom: 0.75rem
+
+.section
+    display: flex
+    justify-content: space-between
+    align-items: center
+    flex-direction: column
+    width: 90vw
+    margin: 5rem auto
+    max-width: 1170px
+
+@media screen and (min-width: 992px)
+.section
+    width: 95vw
+
+.icon
+    font-size: 3rem
+    color: hsl(21, 62%, 45%)
+
+.section-center
+    position: relative
+    display: flex
+    text-align: center
+    width: 80vw
+    height: 450px
+    max-width: 800px
+    overflow: hidden
+
+article
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    opacity: 0
+    transition: all 0.3s linear
+    background-position: center
+    background-repeat: no-repeat
+    background-size: cover
+    background-color: white
+    border-radius: 50px
+    -webkit-transform: scale(1.5)
+    transform: scale(1.5)
+    -webkit-transition: .3s ease-in-out
+    transition: .3s ease-in-out
+
+    &.activeSlide
+        opacity: 1
+        transform: translateX(0)
+
+    &.lastSlide
+        transform: translateX(-100%)
+
+    &.nextSlide
+        transform: translateX(100%)
+
+    &.overSlide
+        // transform: translateY(100%)
+
+    & h1
+        text-transform: uppercase
+        font-size: 28px
+
+.title
+    text-transform: capitalize
+    margin-bottom: 0.75rem
+
+    &
+        text-align: center
+        margin-bottom: 2rem
+
+    & h2
+        display: flex
+        align-items: center
+        justify-content: center
+        font-weight: 500
+
+.text
+    max-width: 35em
+    margin: 0 auto
+    margin-top: 2rem
+
+.prev,
+.next
+    position: absolute
+    top: 200px
+    transform: translateY(-50%)
+    background: hsl(210, 22%, 49%)
+    color: #fff
+    width: 1.25rem
+    height: 1.25rem
+    display: grid
+    place-items: center
+    border-color: transparent
+    font-size: 1rem
+    border-radius: 0.25rem
+    cursor: pointer
+    transition: all 0.3s linear
+    &:hover
+        background: hsl(21, 62%, 45%)
+
+.prev
+    left: 0
+    bottom: 0
+
+.next
+    right: 0
+    bottom: 0
+
+@media (min-width: 800px)
+.text
+    max-width: 45em
+
+.prev,
+.next
+    width: 2rem
+    height: 2rem
+    font-size: 1.5rem
