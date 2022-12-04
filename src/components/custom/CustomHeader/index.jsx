@@ -11,46 +11,53 @@ import {
 
 import './styles.sass';
 
+// TODO: сделать валидацию для инпута - добавить валидацию в useValidation,
+//      1)
+
+// TODO: добавить сюда обработку ошибок: 
+//      1) сделал вывод ошибки что "такого города нет"
+//      2) 
 
 function Header() {
-    // TODO: сделать валидацию тут + добавить валидацию в useValidation, + добавить сюда обработку ошибок
-    const { isLoading, cities, statusMessage } = useSelector(state => state.weather)
-
+    const {
+        isLoading,
+        cities,
+        statusMessage
+    } = useSelector(state => state.weather)
     const dispatch = useDispatch();
-
-    const [city, setCity] = useState('Hong kong');
-
+    const [city, setCity] = useState('');
 
     const handleFindCity = () => {
-        dispatch(getCityInformation(city)).then(() => setCity(''))
+        
+        dispatch(getCityInformation(city.trim()))
     }
     const handleLogout = () => dispatch(logoutAsyncAction())
 
+    useEffect(() => {
+        setCity('')
+    }, [cities]);
+
     return (
-        <div className=''>
-            <div className=''>
+        <header className='header'>
+            <div className='header__search-block'>
+                <button
+                    className='header__button button'
+                    disabled={isLoading}
+                    onClick={handleFindCity}
+                >i</button>
                 <input
-                    className=''
+                    className='header__input input'
                     type="text"
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
                 />
-                <button
-                    className=''
-                    disabled={isLoading}
-                    onClick={handleFindCity}
-                >
-                    Search Weather
-                </button>
-                <p>{statusMessage}</p>
+                <p className='header__message'>{statusMessage}</p>
             </div>
             <button
-                className=''
+                className='header__button button'
                 onClick={handleLogout}
-            >
-                logout
-            </button>
-        </div>
+            >i</button>
+        </header>
     )
 }
 

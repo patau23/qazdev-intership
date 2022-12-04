@@ -2,8 +2,7 @@ import React, { useEffect } from "react";
 
 import "./styles.sass";
 
-const Slider = ({ slides, currentSlide = 0, setCurrentSlide }) => {
-
+const Slider = ({ slides, currentSlide = 0, setCurrentSlide, onClick }) => {
 
     const nextSlide = () => {
         const lastIndex = slides.length - 1;
@@ -38,9 +37,10 @@ const Slider = ({ slides, currentSlide = 0, setCurrentSlide }) => {
                                 className={position}
                                 key={city.id}
                                 style={{ backgroundImage: `url(${city.image})` }}
+                                onClick={() => {onClick()}}
                             >
-                                <h1>{city.name}</h1>
                                 <div className="text">
+                                    <h1>{city.name}</h1>
                                     <div className="title">
                                         <p>
                                             latitude:{city.latitude};
@@ -50,12 +50,11 @@ const Slider = ({ slides, currentSlide = 0, setCurrentSlide }) => {
                                         </p>
                                     </div>
                                     <div className="simple-info">
-
-                                        <p>temperature - {city.currentWeather.temperature} C</p>
-                                        <p>windspeed - {city.currentWeather.windspeed}</p>
-                                        <p>wind direction - {city.currentWeather.winddirection}</p>
-                                        <p>weather code - {city.currentWeather.weathercode}</p>
-                                        <p>time - {city.currentWeather.time}</p>
+                                        <p>temperature: {city.currentWeather.temperature} C</p>
+                                        <p>windspeed: {city.currentWeather.windspeed}</p>
+                                        <p>wind direction: {city.currentWeather.winddirection}</p>
+                                        <p>weather code: {city.currentWeather.weathercode}</p>
+                                        <p>{city.currentWeather.time}</p>
                                     </div>
                                 </div>
                             </article>
@@ -63,19 +62,17 @@ const Slider = ({ slides, currentSlide = 0, setCurrentSlide }) => {
                     );
                 })}
             </div>
-            <div className="pagination-wrapper">
-                <button className="" onClick={prevSlide}>❰</button>
-                {slides.map((city, slideIndex) =>
+            <div className="section-pagination">
+                <button className="button" onClick={prevSlide}>❰</button>
+                {slides.map((slide, slideIndex) =>
                     <button
-                        className="pagination-button"
-                        key={city.id}
-                        onClick={() => {
-                            setCurrentSlide(slideIndex)
-                        }}>
+                        className={"section-pagination section-pagination_slide-btn button"}
+                        key={slide.id}
+                        onClick={() => { setCurrentSlide(slideIndex) }}>
                         {slideIndex + 1}
                     </button>
                 )}
-                <button className="" onClick={nextSlide}>❱</button>
+                <button className="button" onClick={nextSlide}>❱</button>
             </div>
         </section >
     );

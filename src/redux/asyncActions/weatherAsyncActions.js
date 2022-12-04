@@ -32,7 +32,7 @@ export function getCityWeatherForecast(latitude, longitude, cityName) {
             })
             .catch(() => {
                 dispatch(weatherCityForecastFailed({
-                    statusMessage: `Данные о погоде города ${cityName} не доступны`,
+                    statusMessage: `${cityName} weather forecast data is not available now`,
                 }));
             })
     }
@@ -60,7 +60,7 @@ export function getCityGeolocation(cityName) {
             })
             .catch(() => {
                 dispatch(weatherCityGeolocationFailed({
-                    statusMessage: `Такого города, как: ${cityName} - не существует`,
+                    statusMessage: `There is no city which name is ${cityName}`,
                 }));
             })
     }
@@ -98,7 +98,7 @@ export function getCityInformation(cityName) {
                 });
                 // TODO: УБРАТЬ ЭТУ ХУЙНЮ И ЗАМЕНИТЬ НА axios.interceptors (Миша сказал не использовать такие условия в асинхронных экшенах, а лучше делать такое условие в аксиосе (т.е. папка api/axios))
                 if (latitude === undefined || longitude === undefined) {
-                    throw new Error('fuck')
+                    throw new Error('can\'t take any position of city')
                 }
                 return dispatch(getCityWeatherForecast(latitude, longitude, cityName))
             })

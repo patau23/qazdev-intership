@@ -25,10 +25,10 @@ export function initLocalStorageStateAsyncAction() {
             })
             .then(() => {
                 // TODO: доделать автовызов 5 городов по умолчанию, добавить мемоизацию возможно
-                let cities = ['New York', 'Moscow', 'Beijing', 'Paris', 'London']
-                for (let key in cities) {
-                    dispatch(getCityInformation(cities[key]))
-                }
+                // let cities = ['New York', 'Moscow', 'Beijing', 'Paris', 'London']
+                // for (let key in cities) {
+                //     dispatch(getCityInformation(cities[key]))
+                // }
             })
     }
 }

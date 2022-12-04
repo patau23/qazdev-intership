@@ -1,7 +1,36 @@
+html
+    font-size: 18px
+
 body
     // background-image: url('./assets/images/hexagonal-pattern.jpg')
     // background-repeat: no-repeat
     // background-size: contain
     // background-position: center
     background-color: #e7e6f1
-    font-family: 'Poppins', sans-serif
+    font-family: 'Inter', sans-serif
+
+.button
+    display: inline-block
+    width: 40px
+    min-width: 40px
+    height: 40px
+    min-height: 40px
+    background-color: rgb(217, 217, 217)
+    border: none
+    border-radius: 50px
+
+    &:hover
+        background-color: rgb(237, 237, 237)
+
+    &:active
+        background-color: rgb(157, 157, 157)
+
+.input
+    display: block
+    width: 15vw
+    border: 1px solid rgb(217, 217, 217)
+    padding: 5px 10px
+    border-radius: 10px
+
+    &:focus
+        border: 1px solid rgba(255, 255, 255, 0.9)
