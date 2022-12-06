@@ -1,0 +1,1 @@
+# qd-task-for-intership
