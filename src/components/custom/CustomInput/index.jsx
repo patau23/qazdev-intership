@@ -30,7 +30,7 @@ function CustomInput({
         <div className='block-input'>
             <input
                 type={type}
-                className='block-input__field'
+                className='input block-input__field'
                 placeholder={placeholder}
                 value={inputState.value}
                 onChange={(e) => {

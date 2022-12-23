@@ -19,7 +19,7 @@ const CustomAuthForm = ({
             </h3>
             {children}
             <input
-                className={disabled ? 'form__btn' : 'form__btn active'}
+                className={disabled ? 'button form__btn' : 'button form__btn active'}
                 type="submit"
                 disabled={disabled}
             />

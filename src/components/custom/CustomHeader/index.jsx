@@ -45,7 +45,7 @@ function Header() {
                     onClick={handleFindCity}
                 >i</button>
                 <input
-                    className='header__input input'
+                    className='input header__input'
                     type="text"
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
