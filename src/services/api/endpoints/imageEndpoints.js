@@ -1,4 +1,4 @@
-import axios from '../../axios/imagesApi.js'
+import axios from '../../axios/imagesApi.js';
 
 const imagesEndpoints = {
     getCityImages: (cityName) => {

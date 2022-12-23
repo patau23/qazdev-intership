@@ -1,0 +1,42 @@
+.modal
+    height: 100%
+    width: 100%
+    background-color: rgba(0, 0, 0, 0.4)
+    position: fixed
+    top: 0
+    left: 0
+    font-size: 16px
+    display: flex
+    align-items: center
+    justify-content: center
+    opacity: 0
+    pointer-events: none
+    transition: .3s ease-in-out
+
+    &.active
+        opacity: 1
+        pointer-events: all
+
+    &__header
+        display: flex
+        justify-content: space-between
+        align-items: center
+
+    &__title
+        // 
+
+    &__content
+        width: 50%
+        padding: 20px
+        border-radius: 12px
+        background-color: white
+        transform: scale(0.5)
+        transition: .4s all
+
+        &.active
+            transform: scale(1)
+
+    &__close-button
+        width: 25px
+        border-radius: 7px
+        height: 25px

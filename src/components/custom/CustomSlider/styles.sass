@@ -1,15 +1,3 @@
-%slide-shared
-    display: flex
-    align-items: center
-    justify-content: center
-    padding: 2em
-
-h1
-    letter-spacing: 0.1rem
-    text-transform: capitalize
-    line-height: 1.25
-    margin-bottom: 0.75rem
-
 .section
     display: flex
     align-items: center
@@ -17,85 +5,22 @@ h1
     margin: 3rem auto
     max-width: 1170px
 
-    &-center
+    &__center
         width: 80vw
+        height: 55vh
         position: relative
         display: flex
         text-align: center
-        height: 450px
+        justify-content: center
         overflow: hidden
 
-    &-pagination
-        display: flex
-        align-items: center
-        justify-content: space-between
-
-        &_slide-btn
-            display: inline-block
-            font-size: 0.75rem
-            width: 30px
-            height: 30px
-
-article
-    position: absolute
-    top: 0
-    left: 0
-    width: 100%
-    height: 100%
-    opacity: 0
-    background-position: center
-    background-repeat: no-repeat
-    background-size: cover
-    background-color: white
-    border-radius: 50px
-    -webkit-transform: scale(1.5)
-    transform: scale(1.5)
-    -webkit-transition: .3s ease-in-out
-    transition: .3s ease-in-out
-
-    &.activeSlide
-        opacity: 1
-        transform: translateX(0)
-        @extend %slide-shared
-        &:hover
-            box-shadow: inset 0px 0px 10px rgba(0,0,0,0.4)
-
-        &:active
-            box-shadow: inset 0px 0px 10px rgba(0,0,0,0.9)
-
-    &.lastSlide
-        transform: translateX(-100%)
-        @extend %slide-shared
-
-    &.nextSlide
-        transform: translateX(100%)
-        @extend %slide-shared
-
-    &.overSlide
-        @extend %slide-shared
-
-    & h1
-        text-transform: uppercase
-        font-size: 28px
-
-.title
-    text-transform: capitalize
-    margin-bottom: 0.75rem
-
-    &
-        text-align: center
-        margin: 1rem 0
-
-    & h2
+    &__pagination
         display: flex
         align-items: center
         justify-content: center
-        font-weight: 500
 
-.text
-    display: inline-block
-    padding: 2em
-    background-color: rgba(255, 255, 255, 0.7)
-    backdrop-filter: blur(3px)
-    border-radius: 25px
-    max-width: 35em
+    &__button
+        font-size: 0.9rem
+
+        &_active
+            background-color: rgb(157, 157, 157)

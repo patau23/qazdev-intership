@@ -13,8 +13,8 @@ const initStateReducer = (state = initialState, { type, payload }) => {
             return { ...state, isLoading: false, statusMessage: payload.statusMessage };
         case INIT_STATE_IN_LS + FAILED:
             return { ...state, isLoading: false, statusMessage: payload.statusMessage };
-        default:
-            return state;
+        
+            default:return state;
     }
 };
 

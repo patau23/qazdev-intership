@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
 
 import "./styles.sass";
+import SliderPage from "../CustomSliderPage/index.jsx";
+import { useSelector } from "react-redux";
 
-const Slider = ({ slides, currentSlide = 0, setCurrentSlide, onClick }) => {
+const Slider = ({ slides, currentSlide = 0, setCurrentSlide, onSlideClick }) => {
 
     const nextSlide = () => {
         const lastIndex = slides.length - 1;
@@ -17,64 +19,42 @@ const Slider = ({ slides, currentSlide = 0, setCurrentSlide, onClick }) => {
 
     return (
         <section className="section">
-            <div className="section-center">
-                {slides.map((city, slideIndex) => {
-                    let position = "overSlide";
-                    if ((slideIndex === currentSlide - 1) ||
-                        (currentSlide === 0 && slideIndex === slides.length - 1)) {
-                        position = "lastSlide";
-                    }
-                    if (slideIndex === currentSlide) {
-                        position = "activeSlide";
-                    }
-                    if (slideIndex === currentSlide + 1 ||
-                        (currentSlide === slides.length - 1 && slideIndex === 0)) {
-                        position = "nextSlide";
-                    }
-                    return (
-                        <React.Fragment key={city.id}>
-                            <article
-                                className={position}
-                                key={city.id}
-                                style={{ backgroundImage: `url(${city.image})` }}
-                                onClick={() => {onClick()}}
-                            >
-                                <div className="text">
-                                    <h1>{city.name}</h1>
-                                    <div className="title">
-                                        <p>
-                                            latitude:{city.latitude};
-                                        </p>
-                                        <p>
-                                            longitude:{city.longitude}
-                                        </p>
-                                    </div>
-                                    <div className="simple-info">
-                                        <p>temperature: {city.currentWeather.temperature} C</p>
-                                        <p>windspeed: {city.currentWeather.windspeed}</p>
-                                        <p>wind direction: {city.currentWeather.winddirection}</p>
-                                        <p>weather code: {city.currentWeather.weathercode}</p>
-                                        <p>{city.currentWeather.time}</p>
-                                    </div>
-                                </div>
-                            </article>
-                        </React.Fragment>
-                    );
-                })}
-            </div>
-            <div className="section-pagination">
-                <button className="button" onClick={prevSlide}>❰</button>
-                {slides.map((slide, slideIndex) =>
-                    <button
-                        className={"section-pagination section-pagination_slide-btn button"}
-                        key={slide.id}
-                        onClick={() => { setCurrentSlide(slideIndex) }}>
-                        {slideIndex + 1}
-                    </button>
+
+            <div className="section__center">
+                {slides.map((city, slideIndex) =>
+                    <SliderPage
+                        key={slideIndex}
+                        slides={slides}
+                        slide={city}
+                        onSlideClick={onSlideClick}
+                        slideIndex={slideIndex}
+                        currentSlide={currentSlide}
+                    />
                 )}
+            </div>
+
+            <div className="section__pagination">
+                <button className="button" onClick={prevSlide}>❰</button>
+                {slides.map((slide, slideIndex) => {
+                    let active = '';
+                    if (slideIndex === currentSlide) active = 'section__button_active';
+                    else active = '';
+                    return (
+                        <button
+                            className={"button section__button " + active}
+                            key={slide.id}
+                            onClick={() => {
+                                setCurrentSlide(slideIndex)
+                            }}
+                        >
+                            {slideIndex + 1}
+                        </button>
+                    )
+                })}
                 <button className="button" onClick={nextSlide}>❱</button>
             </div>
-        </section >
+
+        </section>
     );
 };
 

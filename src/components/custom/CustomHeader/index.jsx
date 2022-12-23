@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
+    addNewCity,
     logoutAsyncAction
 } from '../../../redux/asyncActions/userAsyncActions';
 
@@ -11,31 +12,29 @@ import {
 
 import './styles.sass';
 
-// TODO: сделать валидацию для инпута - добавить валидацию в useValidation,
-//      1)
-
-// TODO: добавить сюда обработку ошибок: 
-//      1) сделал вывод ошибки что "такого города нет"
-//      2) 
 
 function Header() {
     const {
         isLoading,
-        cities,
+        cities: citiesData,
         statusMessage
-    } = useSelector(state => state.weather)
+    } = useSelector(state => state.weather);
     const dispatch = useDispatch();
     const [city, setCity] = useState('');
 
     const handleFindCity = () => {
-        
-        dispatch(getCityInformation(city.trim()))
+        dispatch(addNewCity(city))
     }
-    const handleLogout = () => dispatch(logoutAsyncAction())
+
+    const handleLogout = () => {
+        dispatch(logoutAsyncAction())
+        // TODO: вынести название для экшена (?)
+        dispatch({ type: "TERMINATE_STORE" })
+    }
 
     useEffect(() => {
         setCity('')
-    }, [cities]);
+    }, [citiesData]);
 
     return (
         <header className='header'>

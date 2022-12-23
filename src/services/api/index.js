@@ -5,11 +5,11 @@ import geolocation from './endpoints/geoEndpoints';
 import images from './endpoints/imageEndpoints';
 
 const Api = {
-    init: _init,
+    _init,
     user,
     weather,
     geo: geolocation,
-    images
+    images,
 }
 
 export default Api;

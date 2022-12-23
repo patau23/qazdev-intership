@@ -7,11 +7,18 @@ import userReducer from '../reducers/userReducer'
 import initStateReducer from "../reducers/initStateReducer";
 import weatherReducer from "../reducers/weatherReducer";
 
-const rootReducer = combineReducers({
+const appReducer = combineReducers({
     localStorageStatement: initStateReducer,
     user: userReducer,
     weather: weatherReducer,
 })
+
+const rootReducer = (state, action) => {
+    if (action.type === 'TERMINATE_STORE') {
+        return appReducer(undefined, action)
+    }
+    return appReducer(state, action)
+}
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
 export default store;

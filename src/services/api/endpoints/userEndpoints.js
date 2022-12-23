@@ -32,22 +32,39 @@ const user = {
             const users = JSON.parse(localStorage.getItem('users'));
             const existedUsername = users.find(user => user.username === username);
             const existedEmail = users.find(user => user.email === email);
+
             if (!existedUsername) {
                 if (!existedEmail) {
                     users.push({
                         id: String(Date.now()),
                         username,
                         email,
-                        password
-                    });
-                    localStorage.setItem('users', JSON.stringify(users));
-                    resolve({ statusMessage: "You have successfully registered" });
+                        password,
+                        cities: ['New York', 'Moscow', 'Beijing', 'Paris', 'London'],
+                    })
+                    localStorage.setItem('users', JSON.stringify(users))
+                    resolve({ statusMessage: "You have successfully registered" })
                 }
                 reject({ statusMessage: "This email address is already registered" })
             }
             reject({ statusMessage: "This username is already taken, please use another one" })
         }, delayValue)
     }),
+
+    // обращение к localStorage чтобы внести новый список городов
+    saveUserCitiesArray: (userID, city) => new Promise((resolve, reject) => {
+        const users = JSON.parse(localStorage.getItem('users'));
+        const currentUser = users.find(user =>
+            user.id === userID
+        );
+        console.log(users, currentUser);
+        currentUser.cities = [...currentUser.cities, city];
+        console.log(currentUser);
+        localStorage.setItem('users', JSON.stringify(users))
+
+        resolve({ statusMessage: "cities are saved for current user", city })
+    })
+
 };
 
 export default user;

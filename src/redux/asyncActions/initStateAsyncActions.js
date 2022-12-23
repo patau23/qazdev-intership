@@ -2,33 +2,25 @@ import {
     initState,
     initStateSucceed,
     initStateFailed,
-} from "../creators/initStateCreators"
+} from "../creators/initStateCreators";
 import Api from "../../services/api";
-import { getCityInformation } from "./weatherAsyncActions";
+import { loginAsyncAction } from "./userAsyncActions";
 
-/* 
-
-!!! THUNK WORKING HERE !!!
-
-*/
 
 export function initLocalStorageStateAsyncAction() {
     return (dispatch) => {
         dispatch(initState({ statusMessage: 'Загрузка Данных ...' }));
 
-        return Api.init.initializeState(dispatch)
-            .then(objectWithMessage => {
-                return dispatch(initStateSucceed(objectWithMessage));
+        return Api._init.initializeState(dispatch)
+            .then(response => {
+                dispatch(initStateSucceed(response))
+                dispatch(loginAsyncAction(
+                    response.authorizedUser.username,
+                    response.authorizedUser.password
+                ))
             })
-            .catch(objectWithFailMessage => {
-                return dispatch(initStateFailed(objectWithFailMessage));
-            })
-            .then(() => {
-                // TODO: доделать автовызов 5 городов по умолчанию, добавить мемоизацию возможно
-                // let cities = ['New York', 'Moscow', 'Beijing', 'Paris', 'London']
-                // for (let key in cities) {
-                //     dispatch(getCityInformation(cities[key]))
-                // }
+            .catch(err => {
+                return dispatch(initStateFailed(err));
             })
     }
 }

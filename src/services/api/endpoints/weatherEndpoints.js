@@ -1,4 +1,4 @@
-import axios from '../../axios/weatherApi.js'
+import axios from '../../axios/weatherApi.js';
 
 const weather = {
     getCityForecast: (lat, long) => {

@@ -1,23 +1,5 @@
-import axios from 'axios'
-// import Cookies from 'js-cookie'
+import axios from 'axios';
 
-const axiosInstance = axios.create({
-    // СОЗДАЕМ ЭКЗЕМПЛЯР БИБЛИОТЕКИ AXIOS,
-    // В КОТОРОМ ПОМЕНЯЕМ НЕКОТОРЫЕ ФУНКЦИОНАЛ
-    baseURL: 'https://api.open-meteo.com/v1' // url апишки
-});
-
-// axiosInstance.interceptors.request.use(
-//     (config) => {
-//         const sessionToken = Cookies.get('Session-Token')
-//         if (sessionToken) {
-//             // перехватчик, который перед запросом будет добавлять 
-//             // заголовок с токеном для авторизации если он есть в куки
-//             config.headers.authorization = `Bearer ${sessionToken}`
-//         }
-//         return config
-//     },
-//     (error) => Promise.reject(error)
-// );
+const axiosInstance = axios.create({ baseURL: 'https://api.open-meteo.com/v1' });
 
 export default axiosInstance;

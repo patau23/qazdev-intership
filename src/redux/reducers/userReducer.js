@@ -1,6 +1,9 @@
 import {
     FETCHING, SUCCEED, FAILED,
-    LOGIN, LOGOUT, REGISTER, DELETE_ACCOUNT,
+    LOGIN,
+    LOGOUT,
+    REGISTER,
+    ADD_CITY,
 } from "../actionTypes/index";
 
 
@@ -10,6 +13,7 @@ const initialState = {
     userID: "",
     username: "",
     email: "",
+    cities: []
 };
 
 const userReducer = (state = initialState, { type, payload }) => {
@@ -26,7 +30,8 @@ const userReducer = (state = initialState, { type, payload }) => {
                 statusMessage: payload.statusMessage,
                 userID: payload.id,
                 username: payload.username,
-                email: payload.email
+                email: payload.email,
+                cities: [...payload.cities]
             };
         case LOGIN + FAILED:
             return {
@@ -46,7 +51,8 @@ const userReducer = (state = initialState, { type, payload }) => {
             return {
                 ...state,
                 isLoading: false,
-                statusMessage: payload.statusMessage
+                statusMessage: payload.statusMessage,
+                cities: ['new york', 'moscow', 'beijing', 'paris', 'london']
             };
         case REGISTER + FAILED:
             return {
@@ -75,22 +81,22 @@ const userReducer = (state = initialState, { type, payload }) => {
 
         // =======================================================
 
-        case DELETE_ACCOUNT + FETCHING:
+        case ADD_CITY + FETCHING:
             return {
                 ...state,
-                isLoading: true
+                isLoading: true,
             };
-        // TODO:
-        case DELETE_ACCOUNT + SUCCEED:
-            return {
-                // ???
-            };
-        case DELETE_ACCOUNT + FAILED:
+        case ADD_CITY + SUCCEED:
             return {
                 ...state,
-                statusMessage: payload.statusMessage
+                isLoading: false,
+                cities: [...state.cities, payload.city]
             };
-
+        case ADD_CITY + FAILED:
+            return {
+                ...state,
+                isLoading: false,
+            };
         // =======================================================
 
         default:

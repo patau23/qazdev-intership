@@ -59,21 +59,22 @@
     transition: 0.5s ease-in-out
     overflow: hidden
     display: flex
+    justify-content: center
     align-items: center
 
     &.active
         left: 50%
 
         & .form_signup
-            left: 25%
+            position: static
 
         & .form_signin
-            left: -50%
+            position: absolute
+            left: -100%
 
 .form_signup
     position: absolute
     left: 100%
 
 .form_signin
-    position: absolute
-    left: 25%
+    position: static

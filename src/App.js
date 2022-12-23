@@ -5,19 +5,12 @@ import { initLocalStorageStateAsyncAction } from './redux/asyncActions/initState
 
 import './App.sass';
 import AppRoutes from './components/routes/AppRoutes/index.jsx';
-import Api from './services/api';
 
-
-export default function App(props) {
+export default function App() {
     const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch(initLocalStorageStateAsyncAction())
-        // async function fetchData() {
-        //     const res = await Api.images.getCityImages('London')
-        //     console.log(res);
-        // }
-        // fetchData()
     }, []);
 
     return (

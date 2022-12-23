@@ -1,15 +1,11 @@
-import { loginAsyncAction } from "../../../redux/asyncActions/userAsyncActions";
-
-
 const _init = {
-    initializeState: (dispatch) => {
+    initializeState: () => {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
-
                 try {
-                    const { username, password } = JSON.parse(localStorage.getItem('authorizedUser'));;
-                    if (username, password) {
-                        dispatch(loginAsyncAction(username, password));
+                    const authorizedUser = JSON.parse(localStorage.getItem('authorizedUser'));
+                    if (authorizedUser.username, authorizedUser.password) {
+                        resolve({ statusMessage: 'localStorage загружен', authorizedUser })
                     }
                 } catch {
                     localStorage.setItem('users', JSON.stringify([]))
@@ -21,7 +17,7 @@ const _init = {
                 // reject({ statusMessage: 'Произошла проблема с загрузкой данных, попробуйте войти позже' });
             }, 1000)
         })
-    }
+    },
 };
 
 export default _init;

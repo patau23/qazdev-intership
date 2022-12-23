@@ -1,23 +1,16 @@
 import {
     FETCHING, SUCCEED, FAILED,
-
     WEATHER_DATA_REQUEST,
     GEOLOCATION_REQUEST,
     CITY_IMAGES_REQUEST,
 } from "../actionTypes/index";
-import { cities } from './citites.data.js'
 
-const defaultStockImage =
-    'https://i.pinimg.com/originals/44/50/47/445047a05f907af7dd100e1d53beb868.jpg';
+const defaultStockImage = 'https://i.pinimg.com/originals/44/50/47/445047a05f907af7dd100e1d53beb868.jpg';
 
 const initialState = {
     isLoading: false,
     statusMessage: "",
-    // TODO: объект newCity для проверок и прочего
-    newCity: {},
-    cities: [
-        ...cities
-    ],
+    cities: [],
 };
 
 const weatherReducer = (state = initialState, { type, payload }) => {

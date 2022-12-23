@@ -12,6 +12,9 @@ export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
 export const REGISTER = "REGISTER";
 export const DELETE_ACCOUNT = "DELETE_ACCOUNT";
+// user's cities ruequests
+export const ADD_CITY = "ADD_CITY";
+export const DELETE_CITY = "DELETE_CITY";
 
 
 // =====  ABOUT weather requests  =====

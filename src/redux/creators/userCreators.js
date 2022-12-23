@@ -4,7 +4,9 @@ import {
     LOGIN,
     REGISTER,
     LOGOUT,
-    DELETE_ACCOUNT
+    DELETE_ACCOUNT,
+    ADD_CITY,
+    DELETE_CITY
 } from "../actionTypes";
 
 // for login
@@ -26,3 +28,12 @@ export const userRegisterFailed = (payload) => ({ type: REGISTER + FAILED, paylo
 export const userDeleteAccount = () => ({ type: DELETE_ACCOUNT + FETCHING });
 export const userDeleteAccountSucceed = (payload) => ({ type: DELETE_ACCOUNT + SUCCEED, payload });
 export const userDeleteAccountFailed = (payload) => ({ type: DELETE_ACCOUNT + FAILED, payload });
+
+// for change city list 
+export const userAddCity = () => ({ type: ADD_CITY + FETCHING });
+export const userAddCitySucceed = (payload) => ({ type: ADD_CITY + SUCCEED, payload });
+export const userAddCityFailed = (payload) => ({ type: ADD_CITY + FAILED, payload });
+
+export const userDeleteCity = () => ({ type: DELETE_CITY + FETCHING });
+export const userDeleteCitySucceed = (payload) => ({ type: DELETE_CITY + SUCCEED, payload });
+export const userDeleteCityFailed = (payload) => ({ type: DELETE_CITY + FAILED, payload });
